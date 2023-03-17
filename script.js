@@ -3,21 +3,23 @@
 //make sure word matches list in an array
 //make sure word is no more than 5 letters
 //make sure letters are letters and no characters
-// const validateWord = (word) => {
-//     if(word == "\b[a-zA-Z]{5}\b"){
-//         return true
-//     } else {
-//         return false
-//     }
-// };
 
 const validateWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/;
-  const matches = word.match(pattern)
-  if(matches!== null){
-    return true
-  }else {
-    return false
+  const matches = word.match(pattern);
+  if (matches !== null) {
+    return true;
+  } else {
+    return false;
   }
-//   return matches !== null && matches.length > 0; 
+};
+
+console.log(WORDS[1]);
+
+const checkWordArray = (array) => {
+  if (array.every(validateWord)) {
+   return true
+  } else {
+    return false;
+  }
 };

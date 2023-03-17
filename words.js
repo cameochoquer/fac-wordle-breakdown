@@ -1,4 +1,4 @@
-export const WORDS = [
+const WORDS = [
     'which',
     'there',
     'their',
@@ -5756,4 +5756,5 @@ export const WORDS = [
     'rumba',
     'biffy',
     'pupal',
-  ]
+  ];
+ 
