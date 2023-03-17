@@ -13,7 +13,8 @@ function test(name, testFunction) {
   console.groupEnd(name);
 }
 
-test("checks word has only letters", () => {
-  const result = validateWord("hello");
-  equal(result, false);
+test("check for 5 letter word", () => {
+  let word = "hello";
+  const result = validateWord(word);
+  equal(result, true);
 });

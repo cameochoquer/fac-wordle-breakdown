@@ -3,11 +3,16 @@
 //make sure word matches list in an array
 //make sure word is no more than 5 letters
 //make sure letters are letters and no characters
+// const validateWord = (word) => {
+//     if(word == "\b[a-zA-Z]{5}\b"){
+//         return true
+//     } else {
+//         return false
+//     }
+// };
+
 const validateWord = (word) => {
-    if(word ==="/^a-z$/"){
-        return true
-    }else{
-        return false
-        console.log("this isn't a word")
-    }
-}
+  const pattern = /\b[a-zA-Z]{5}\b/;
+  const matches = word.match(pattern)
+  return matches !== null && matches.length > 0; 
+};
