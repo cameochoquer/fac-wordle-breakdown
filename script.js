@@ -4,6 +4,7 @@
 //make sure word is no more than 5 letters
 //make sure letters are letters and no characters
 
+//create 5 letter word pattern
 const validateWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/;
   const matches = word.match(pattern);
@@ -13,9 +14,7 @@ const validateWord = (word) => {
     return false;
   }
 };
-
-console.log(WORDS[1]);
-
+//check the array of 5 letters words that it matches the pattern
 const checkWordArray = (array) => {
   if (array.every(validateWord)) {
    return true
@@ -23,3 +22,9 @@ const checkWordArray = (array) => {
     return false;
   }
 };
+//get a word for the day
+const wordOfTheDay = (array)=>{
+const index = Math.floor(Math.random() * array.length);
+console.log(array[index]);
+}
+wordOfTheDay(WORDS)
