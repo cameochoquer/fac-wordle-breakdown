@@ -14,5 +14,10 @@
 const validateWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/;
   const matches = word.match(pattern)
-  return matches !== null && matches.length > 0; 
+  if(matches!== null){
+    return true
+  }else {
+    return false
+  }
+//   return matches !== null && matches.length > 0; 
 };

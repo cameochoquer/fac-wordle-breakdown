@@ -14,7 +14,7 @@ function test(name, testFunction) {
 }
 
 test("check for 5 letter word", () => {
-  let word = "hello";
+  let word = "hedllo";
   const result = validateWord(word);
   equal(result, true);
 });
