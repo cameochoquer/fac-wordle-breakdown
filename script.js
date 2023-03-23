@@ -5,7 +5,7 @@
 //make sure letters are letters and no characters
 
 //create 5 letter word pattern
-const validateWord = (word) => {
+const isFiveLetterWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/;
   const matches = word.match(pattern);
   if (matches !== null) {
@@ -16,7 +16,7 @@ const validateWord = (word) => {
 };
 //check the array of 5 letters words that it matches the pattern
 const checkWordArray = (array) => {
-  if (array.every(validateWord)) {
+  if (array.every(isFiveLetterWord)) {
    return true
   } else {
     return false;
@@ -24,7 +24,65 @@ const checkWordArray = (array) => {
 };
 //get a word for the day
 const wordOfTheDay = (array)=>{
-const index = Math.floor(Math.random() * array.length);
-console.log(array[index]);
-}
-wordOfTheDay(WORDS)
+  const index = Math.floor(Math.random() * array.length);
+  console.log(array[index]);
+  };
+  wordOfTheDay(WORDS);
+
+const row = document.getElementById('row-1');
+const squares = row.querySelectorAll('.square');
+const wordArray = [];
+
+document.addEventListener('keydown', (e) => {
+    const letter = e.key.toUpperCase();
+
+   if(letter.match(/[A-Z]$/)){
+    if(wordArray.length < 5){
+      wordArray.push(letter);
+      squares[wordArray.length-1].textContent=letter
+    };
+   };
+   if (e.key === 'Enter') {
+    checkGuess(wordArray.join(''));
+  };
+  if (e.key === 'Backspace') {
+    if (wordArray.length > 0) {
+      const removedLetter = wordArray.pop();
+      squares[wordArray.length].textContent = '';
+    };
+  };
+});
+
+const checkGuess = (word) => {
+  console.log(word);
+};
+
+
+// document.addEventListener('keydown', (e) => {
+//   const letter = e.key.toUpperCase();
+//   const wordArray = Array.from(squares)
+//   const word = wordArray.textContent;
+//   console.log(word)
+
+//   const emptySquare = wordArray.find(square => square.textContent === '');
+
+//   if (letter.match(/^[A-Z]$/) && emptySquare) {
+//     emptySquare.textContent = letter;
+//   }
+
+//   if (e.key === 'Enter') {
+//     checkGuess();
+//   }
+//   if(e.key === 'Backspace'){
+//     const filledSquares = wordArray.filter(square => square.textContent !== '');
+//     const lastFilledSquare = filledSquares[filledSquares.length - 1];
+
+//     if (lastFilledSquare) {
+//       lastFilledSquare.textContent = '';
+//     }
+//   }
+// });
+
+// const checkGuess = () => {
+
+// }
