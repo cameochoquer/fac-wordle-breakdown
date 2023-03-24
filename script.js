@@ -33,29 +33,72 @@ const row = document.getElementById("row-1");
 const squares = row.querySelectorAll(".square");
 const wordArray = [];
 
+const triggerSquares = () => {
+  squares.forEach((square) => square.classList.add("horizontal-shake-trigger"));
+  setTimeout(
+    () =>
+      squares.forEach((square) =>
+        square.classList.remove("horizontal-shake-trigger")
+      ),
+    350
+  );
+};
+
+const isAWord = (word, array) => {
+  if(array.includes(word)){return true}
+  if(!array.includes(word)){triggerSquares();return false;};
+};
+
+const guess = (array) => {
+  if (array.length === 5) {
+    return array.join("");
+  } else if (array.length < 5) {
+    triggerSquares();
+  }
+};
+const removeLetter = (array) => {
+  if (array.length > 0) {
+    array.pop();
+    squares[array.length].textContent = "";
+  }
+};
+const addLetter = (array, char) => {
+  if (array.length < 5) {
+    array.push(char);
+    squares[array.length - 1].textContent = char;
+  }
+};
+
 document.addEventListener("keydown", (e) => {
   const letter = e.key.toLowerCase();
 
   if (letter.match(/^[a-z]$/)) {
-    if (wordArray.length < 5) {
-      wordArray.push(letter);
-      squares[wordArray.length - 1].textContent = letter;
-    }
+    addLetter(wordArray, letter);
   }
   if (e.key === "Backspace") {
-    if (wordArray.length > 0) {
-      wordArray.pop();
-      squares[wordArray.length].textContent = "";
-    }
+    removeLetter(wordArray);
   }
   if (e.key === "Enter") {
-    if ((wordArray.length === 5)) {
-      const guess = wordArray.join("")
-      isAWord(guess, WORDS)
-    }
+    // guess(wordArray);
+    isAWord(guess(wordArray),WORDS)
   }
 });
 
-const isAWord = (word, array) => {
-  array.includes(word);
-};
+//alternative approach using switch statements
+// document.addEventListener("keydown", (e) => {
+//   const letter = e.key.toLowerCase();
+
+//   switch (letter) {
+//     case "backspace":
+//       removeLetter(wordArray);
+//       break;
+//     case "enter":
+//       guess(wordArray);
+//       break;
+//     default:
+//       if (letter.match(/^[a-z]$/)) {
+//         addLetter(wordArray, letter);
+//       }
+//       break;
+//   }
+// });
