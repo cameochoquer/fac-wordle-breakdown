@@ -26,7 +26,13 @@
     width: 24px;
     border-style: solid;
     border-color: black;
+    border-width: 1px;
     font-family: 'Courier New', Courier, monospace;
     color: black;
     font-size: small;
+    text-align: center;
+    padding: 2px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
   }

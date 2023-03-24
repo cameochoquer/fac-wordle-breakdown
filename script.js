@@ -34,22 +34,28 @@ const squares = row.querySelectorAll(".square");
 const wordArray = [];
 
 document.addEventListener("keydown", (e) => {
-  const letter = e.key.toUpperCase();
+  const letter = e.key.toLowerCase();
 
-  if (letter.match(/^[A-Z]$/)) {
+  if (letter.match(/^[a-z]$/)) {
     if (wordArray.length < 5) {
       wordArray.push(letter);
       squares[wordArray.length - 1].textContent = letter;
     }
-  };
+  }
   if (e.key === "Backspace") {
     if (wordArray.length > 0) {
       wordArray.pop();
       squares[wordArray.length].textContent = "";
     }
   }
+  if (e.key === "Enter") {
+    if ((wordArray.length === 5)) {
+      const guess = wordArray.join("")
+      isAWord(guess, WORDS)
+    }
+  }
 });
 
-const checkGuess = (word) => {
-  console.log(word);
+const isAWord = (word, array) => {
+  array.includes(word);
 };
