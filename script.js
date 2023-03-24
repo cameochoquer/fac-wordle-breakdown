@@ -1,10 +1,10 @@
-//as a user I want to get feedback from the app if I've written a word that doesn't exist
-//as a user I want to get feedback from the app if I've written less than 5 letters
-//make sure word matches list in an array
-//make sure word is no more than 5 letters
-//make sure letters are letters and no characters
+// as a user I want to get feedback from the app if I've written a word that doesn't exist
+// as a user I want to get feedback from the app if I've written less than 5 letters
+// make sure word matches list in an array
+// make sure word is no more than 5 letters
+// make sure letters are letters and no characters
 
-//create 5 letter word pattern
+// create 5 letter word pattern
 const isFiveLetterWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/;
   const matches = word.match(pattern);
@@ -14,7 +14,7 @@ const isFiveLetterWord = (word) => {
     return false;
   }
 };
-//check the array of 5 letters words that it matches the pattern
+// check the array of 5 letters words that it matches the pattern
 const checkWordArray = (array) => {
   if (array.every(isFiveLetterWord)) {
     return true;
@@ -22,7 +22,7 @@ const checkWordArray = (array) => {
     return false;
   }
 };
-//get a word for the day
+// get a word for the day
 const wordOfTheDay = (array) => {
   const index = Math.floor(Math.random() * array.length);
   console.log(array[index]);
@@ -45,8 +45,13 @@ const triggerSquares = () => {
 };
 
 const isAWord = (word, array) => {
-  if(array.includes(word)){return true}
-  if(!array.includes(word)){triggerSquares();return false;};
+  if (array.includes(word)) {
+    return true;
+  }
+  if (!array.includes(word)) {
+    triggerSquares();
+    return false;
+  }
 };
 
 const guess = (array) => {
@@ -80,11 +85,11 @@ document.addEventListener("keydown", (e) => {
   }
   if (e.key === "Enter") {
     // guess(wordArray);
-    isAWord(guess(wordArray),WORDS)
+    isAWord(guess(wordArray), WORDS);
   }
 });
 
-//alternative approach using switch statements
+// alternative approach using switch statements
 // document.addEventListener("keydown", (e) => {
 //   const letter = e.key.toLowerCase();
 
