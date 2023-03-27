@@ -1,9 +1,3 @@
-// as a user I want to get feedback from the app if I've written a word that doesn't exist
-// as a user I want to get feedback from the app if I've written less than 5 letters
-// make sure word matches list in an array
-// make sure word is no more than 5 letters
-// make sure letters are letters and no characters
-// create 5 letter word pattern
 import WORDS from './words.js'
 const isFiveLetterWord = (word) => {
   const pattern = /\b[a-zA-Z]{5}\b/
