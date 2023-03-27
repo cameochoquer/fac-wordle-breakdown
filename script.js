@@ -3,91 +3,91 @@
 // make sure word matches list in an array
 // make sure word is no more than 5 letters
 // make sure letters are letters and no characters
-
 // create 5 letter word pattern
+import WORDS from './words.js'
 const isFiveLetterWord = (word) => {
-  const pattern = /\b[a-zA-Z]{5}\b/;
-  const matches = word.match(pattern);
+  const pattern = /\b[a-zA-Z]{5}\b/
+  const matches = word.match(pattern)
   if (matches !== null) {
-    return true;
+    return true
   } else {
-    return false;
+    return false
   }
-};
+}
 // check the array of 5 letters words that it matches the pattern
 const checkWordArray = (array) => {
   if (array.every(isFiveLetterWord)) {
-    return true;
+    return true
   } else {
-    return false;
+    return false
   }
-};
+}
 // get a word for the day
 const wordOfTheDay = (array) => {
-  const index = Math.floor(Math.random() * array.length);
-  console.log(array[index]);
-};
-wordOfTheDay(WORDS);
+  const index = Math.floor(Math.random() * array.length)
+  console.log(array[index])
+}
+wordOfTheDay(WORDS)
 
-const row = document.getElementById("row-1");
-const squares = row.querySelectorAll(".square");
-const wordArray = [];
+const row = document.getElementById('row-1')
+const squares = row.querySelectorAll('.square')
+const wordArray = []
 
 const triggerSquares = () => {
-  squares.forEach((square) => square.classList.add("horizontal-shake-trigger"));
+  squares.forEach((square) => square.classList.add('horizontal-shake-trigger'))
   setTimeout(
     () =>
       squares.forEach((square) =>
-        square.classList.remove("horizontal-shake-trigger")
+        square.classList.remove('horizontal-shake-trigger')
       ),
     350
-  );
-};
+  )
+}
 
 const isAWord = (word, array) => {
   if (array.includes(word)) {
-    return true;
+    return true
   }
   if (!array.includes(word)) {
-    triggerSquares();
-    return false;
+    triggerSquares()
+    return false
   }
-};
+}
 
 const guess = (array) => {
   if (array.length === 5) {
-    return array.join("");
+    return array.join('')
   } else if (array.length < 5) {
-    triggerSquares();
+    triggerSquares()
   }
-};
+}
 const removeLetter = (array) => {
   if (array.length > 0) {
-    array.pop();
-    squares[array.length].textContent = "";
+    array.pop()
+    squares[array.length].textContent = ''
   }
-};
+}
 const addLetter = (array, char) => {
   if (array.length < 5) {
-    array.push(char);
-    squares[array.length - 1].textContent = char;
+    array.push(char)
+    squares[array.length - 1].textContent = char
   }
-};
+}
 
-document.addEventListener("keydown", (e) => {
-  const letter = e.key.toLowerCase();
+document.addEventListener('keydown', (e) => {
+  const letter = e.key.toLowerCase()
 
   if (letter.match(/^[a-z]$/)) {
-    addLetter(wordArray, letter);
+    addLetter(wordArray, letter)
   }
-  if (e.key === "Backspace") {
-    removeLetter(wordArray);
+  if (e.key === 'Backspace') {
+    removeLetter(wordArray)
   }
-  if (e.key === "Enter") {
+  if (e.key === 'Enter') {
     // guess(wordArray);
-    isAWord(guess(wordArray), WORDS);
+    isAWord(guess(wordArray), WORDS)
   }
-});
+})
 
 // alternative approach using switch statements
 // document.addEventListener("keydown", (e) => {
